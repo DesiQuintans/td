@@ -25,9 +25,6 @@ I'll probably do something fancier in Nim.
 ```
 
 ```
-Created:
-  Desktop\my-proj\prepare first draft.md
-
 +---my-proj
 |       download newest data
 |    -> prepare first draft
@@ -36,6 +33,8 @@ Created:
 \---personal
         mow lawn
         pick up moon cakes
+        
+C:\Users\...\Desktop\my-proj\prepare first draft.md
 ```
 
 ### Create a task and then immediately open its file

@@ -18,6 +18,9 @@ I'll probably do something fancier in Nim.
 
 ## Usage
 
+This script needs to be accessed through a Powershell terminal, and the script should 
+to be in the computer's [PATH](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/). 
+
 ### Create a new task
 
 ``` powershell

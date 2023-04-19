@@ -40,7 +40,9 @@ to be in the computer's [PATH](https://www.howtogeek.com/118594/how-to-edit-your
 C:\Users\...\Desktop\my-proj\prepare first draft.md
 ```
 
-### Create a task and then immediately open its file
+Existing identically-named tasks will be overwritten.
+
+### Create a new task and then immediately open its file
 
 `ii` is an alias for *Invoke-Item*. The file opens in your default text editor.
 

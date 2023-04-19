@@ -49,3 +49,24 @@ Existing identically-named tasks will be overwritten.
 ``` powershell
 > td my-proj/prepare first draft | ii
 ```
+
+### Looking at all of your tasks
+
+Open a Powershell terminal on your desktop (Shift + Right Click) and use Windows' 
+`tree` command with the `/F` argument to show filenames.
+
+``` powershell
+tree /F
+```
+
+```
++---my-proj
+|       download newest data
+|       prepare first draft
+|       tree measurement field trip 2023-05-07
+|
+\---personal
+        mow lawn
+        pick up moon cakes
+```
+

@@ -43,21 +43,6 @@ Existing identically-named tasks will NOT be overwritten.
 > td CHAPTER 1 - Prepare first draft | ii
 ```
 
-You can also use tab-completion to select a filename. It is easiest to type part of the project name and then hit [Tab] until 
-the right name shows up. For example:
-
-``` powershell
-> td CHAPTER 1
-
-# Then hit [Tab] until the right suggestion comes up:
-
-> td '.\CHAPTER 1 - Prepare first draft.md'
-
-# Then add the | ii to the end and hit [Enter]:
-
-> td '.\CHAPTER 1 - Prepare first draft.md' | ii
-```
-
 ### Looking at all of your tasks
 
 ```powershell

@@ -6,14 +6,11 @@ A version of Zach Holman's `todo`, personalised for me. See:
 - <https://github.com/holman/dotfiles/commit/d774e970a88a04aca8024178849301af6d6ac5c3>
 
 My version creates _.md_ text files so that I can put task-related info inside 
-them. It also prints a tree structure of my desktop's subfolders and _.md_ files;
-since my desktop is cleared of everything except to-do related files, this gives me a
-glance at all of my active tasks.
+them. It also prints a nice table of the tasks within each project.
 
-The script returns the new file so it can be piped forward.
+If a task file was created or referenced, the script returns it so it can be piped forward.
 
-It's written in Powershell as a quick exercise. If I end up really liking this idea
-I'll probably do something fancier in Nim.
+It's written in Powershell as a quick exercise.
 
 
 ## Usage
@@ -23,50 +20,54 @@ to be in the computer's [PATH](https://www.howtogeek.com/118594/how-to-edit-your
 
 ### Create a new task
 
-``` powershell
-> td my-proj/prepare first draft
+```powershell
+> td CHAPTER 1 - Prepare first draft
 ```
 
 ```
-+---my-proj
-|       download newest data
-|    -> prepare first draft
-|       tree measurement field trip 2023-05-07
-|
-\---personal
-        mow lawn
-        pick up moon cakes
-        
-C:\Users\...\Desktop\my-proj\prepare first draft.md
+    Created         Project         Task
+    -------         -------         ----
+    2024-06-24      CHAPTER 1       Prepare first draft
+
+    The task's file is located at:
+    C:\Users\xxx\Desktop\CHAPTER 1 - Prepare first draft.md
 ```
 
-Existing identically-named tasks will be overwritten.
+Existing identically-named tasks will NOT be overwritten.
 
 ### Create a new task and then immediately open its file
 
 `ii` is an alias for *Invoke-Item*. The file opens in your default text editor.
 
 ``` powershell
-> td my-proj/prepare first draft | ii
+> td CHAPTER 1 - Prepare first draft | ii
+```
+
+You can also use tab-completion to select a filename. It is easiest to type part of the project name and then hit [Tab] until 
+the right name shows up. For example:
+
+``` powershell
+> td CHAPTER 1
+
+# Then hit [Tab] until the right suggestion comes up:
+
+> td '.\CHAPTER 1 - Prepare first draft.md'
+
+# Then add the | ii to the end and hit [Enter]:
+
+> td '.\CHAPTER 1 - Prepare first draft.md' | ii
 ```
 
 ### Looking at all of your tasks
 
-Open a Powershell terminal on your desktop (Shift + Right Click) and use Windows' 
-`tree` command with the `/F` argument to show filenames.
-
-``` powershell
-tree /F
+```powershell
+> td
 ```
 
 ```
-+---my-proj
-|       download newest data
-|       prepare first draft
-|       tree measurement field trip 2023-05-07
-|
-\---personal
-        mow lawn
-        pick up moon cakes
+    Created         Project         Task
+    -------         -------         ----
+    2024-06-24      CHAPTER 1       Prepare first draft
 ```
 
+Files are sorted first by project, and then by creation date.

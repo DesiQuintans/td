@@ -38,7 +38,7 @@ function Show-Tasks {
                 @{Label = 'Project'; Expression = {$_.Name -replace '^(.*?) - .*?$', '$1'};        Width = 15},
                 @{Label = 'Task';    Expression = {$_.Name -replace '^.*? - (.*?)\.md$', '$1'}}
 
-    Get-ChildItem -Filter *.md |
+    Get-ChildItem -Path $ToDoPath -Filter *.md |
     Sort-Object Name, CreationTime |
     Format-Table -Property $tdlayout -Wrap |
     Out-String |

@@ -3,8 +3,13 @@
 #
 # A to-do system that uses loose Markdown files to track tasks. Each file is an action item, and
 # can contain notes relevant to that task. You should name your tasks as
+#
 #    PROJECTNAME - Task description
-# so that they show up nicely in the task list table.
+#
+# so that they show up nicely in the task list table. Filenames are suffixed with their 
+# creation date to counteract potential data loss; for example, if you download the file from an
+# email or the web, the Creation Time metadata in the file might be replaced with the date when
+# the file was downloaded to your computer.
 #
 # Usage:
 #     > td CHAPTER 1 - Prepare first draft
@@ -14,7 +19,7 @@
 #         2024-06-24      CHAPTER 1       Prepare first draft
 #
 #         The task's file is located at:
-#         C:\Users\xxx\Desktop\CHAPTER 1 - Prepare first draft.md
+#         C:\Users\xxx\Desktop\CHAPTER 1 - Prepare first draft - (2025-09-17).md
 #
 #     > td
 #
@@ -25,18 +30,18 @@
 
 
 
-# Establish where the files will be created. If you want to put them on your desktop, use:
-$ToDoPath = [Environment]::GetFolderPath("Desktop")
-# $ToDoPath = "C:\Users\myusername\path\to\folder"
+# Establish where the files will be created.
+$DesktopPath = [Environment]::GetFolderPath("Desktop")
+$ToDoPath = "$DesktopPath\Task list"
 
 
 
 # This function prints a table of current projects and tasks, sorted first by project and then by creation date.
 function Show-Tasks {
     # This is what the table will look like.
-    $tdlayout = @{Label = 'Created'; Expression = {$_.CreationTime -replace '^(.{10}).*?$', '$1'}; Width = 15},
-                @{Label = 'Project'; Expression = {$_.Name -replace '^(.*?) - .*?$', '$1'};        Width = 15},
-                @{Label = 'Task';    Expression = {$_.Name -replace '^.*? - (.*?)\.md$', '$1'}}
+    $tdlayout = @{Label = 'Created'; Expression = {$_.Name -replace '^(.*?) - (.*?) - \((.*?)\)\.md', '$3'}; Width = 15},
+                @{Label = 'Project'; Expression = {$_.Name -replace '^(.*?) - (.*?) - \((.*?)\)\.md', '$1'}; Width = 25},
+                @{Label = 'Task';    Expression = {$_.Name -replace '^(.*?) - (.*?) - \((.*?)\)\.md', '$2'}}
 
     Get-ChildItem -Path $ToDoPath -Filter *.md |
     Sort-Object Name, CreationTime |
@@ -53,6 +58,8 @@ if($args.Count -eq 0) {
 }
 
 
+# Datestamp. This is appended to the name of the new file.
+$DateStamp = Get-Date -Format yyyy-MM-dd
 
 # If arguments are provided, treat them as the name of a new task. Clean the
 # input so that it can be used as a valid filename.
@@ -61,17 +68,16 @@ $TaskPath = $TaskPath -replace "/", "\"
 $TaskPath = $TaskPath -replace "(\.md)+$", ""
 $TaskPath = $TaskPath -replace "^(.\\)+", ""
 $TaskName = Split-Path -Path $TaskPath -Leaf
-$FullPath = "$ToDoPath\$TaskPath.md"
+$FullPath = "$ToDoPath\$TaskPath - ($DateStamp).md"
 
 
 # Contents of the file that will be created.
-$DateStamp = Get-Date -Format yyyy-MM-dd
 $Contents  = @"
 # $TaskPath ($DateStamp)
 
 -------------------------------------------------------------------------------
 
-
+- [ ] 
 "@
 
 

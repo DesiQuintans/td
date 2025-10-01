@@ -30,7 +30,7 @@ to be in the computer's [PATH](https://www.howtogeek.com/118594/how-to-edit-your
     2024-06-24      CHAPTER 1       Prepare first draft
 
     The task's file is located at:
-    C:\Users\xxx\Desktop\CHAPTER 1 - Prepare first draft.md
+    C:\Users\xxx\Desktop\CHAPTER 1 - Prepare first draft - (2025-09-17).md
 ```
 
 Existing identically-named tasks will NOT be overwritten.

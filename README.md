@@ -18,7 +18,7 @@ It's written in Powershell as a quick exercise.
 This script needs to be accessed through a Powershell terminal, and the script should 
 to be in the computer's [PATH](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/). 
 
-By default, files are created inside a folder called `Task list` that is on your Desktop (i.e. `C:\Users\xxx\Desktop\Task list\`). To change where this is, edit the `ToDoPath` variable near line 35.
+By default, files are created on your Desktop (i.e. `C:\Users\xxx\Desktop\`). To change where this is, edit the `ToDoPath` variable near line 35.
 
 ### Create a new task
 
@@ -66,5 +66,5 @@ Files are sorted first by project, and then by creation date.
 
 `td` only lists Markdown files that are located in the `ToDoPath`. To make them no longer appear as active tasks, simply move them out of this folder.
 
-My personal method is to create a folder for the first day of each week in the year (e.g. `Task list\2025-10-06\`, `Task list\2025-10-13\`, etc.) and to put all tasks that I've completed during that week into that folder.
+My personal method is to create a folder for the first day of each week in the year (e.g. `\2025-10-06\`, `\2025-10-13\`, etc.) and to put all tasks that I've completed during that week into that folder.
 

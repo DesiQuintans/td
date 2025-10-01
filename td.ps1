@@ -32,7 +32,7 @@
 
 # Establish where the files will be created.
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
-$ToDoPath = "$DesktopPath\Task list"
+$ToDoPath = "$DesktopPath"
 
 
 
@@ -94,3 +94,4 @@ Show-Tasks
 # Returning the full path to the new file allows me to pipe into `td my_new_task | ii`.
 Write-Host "The task's file is located at:" -ForegroundColor green
 return $FullPath
+

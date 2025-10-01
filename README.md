@@ -35,7 +35,10 @@ By default, files are created inside a folder called `Task list` that is on your
     C:\Users\xxx\Desktop\CHAPTER 1 - Prepare first draft - (2025-09-17).md
 ```
 
-Existing identically-named tasks will NOT be overwritten.
+Existing identically-named tasks will NOT be overwritten. Filenames are suffixed with their 
+creation date to counteract potential data loss; for example, if you download the file from an
+email or the web, the Creation Time metadata in the file might be replaced with the date when
+the file was downloaded to your computer.
 
 ### Create a new task and then immediately open its file
 
